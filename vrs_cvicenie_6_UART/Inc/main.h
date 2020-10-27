@@ -68,7 +68,13 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+static char MAIN_ledONstring[6] = {'l', 'e', 'd', 'O', 'N', '\0'};
+static char MAIN_ledOFFstring[7] = {'l', 'e', 'd', 'O', 'F', 'F', '\0'};
 
+// defines for output port used by LED
+#define		GPIO_PORT_LED					GPIOB
+#define		GPIO_PIN_LED					LL_GPIO_PIN_3
+#define		GPIO_LED_IS_ON					(LL_GPIO_ReadInputPort(GPIO_PORT_LED) & GPIO_PIN_LED)
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
