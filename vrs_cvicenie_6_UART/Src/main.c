@@ -92,9 +92,10 @@ void SystemClock_Config(void)
 void sendLedstring(char *string){
 	uint8_t i = 0;
 	while(string[i] != '\0'){
-		LL_USART_TransmitData8(USART2, string[i]);
-		LL_mDelay(1);
-		i++;
+		if(LL_USART_IsActiveFlag_TXE(USART2)){
+			LL_USART_TransmitData8(USART2, string[i]);
+			i++;
+		}
 	}
 }
 
